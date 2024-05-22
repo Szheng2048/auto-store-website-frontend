@@ -24,29 +24,13 @@ export class SignUp extends Component {
         phoneNumberError:"",
         passwordError:"",
         confirmPasswordError:"",
+        showError: false,
     }
     handleOnChange =(event)=>{
         this.setState({
             [event.target.name]:`${event.target.value}`,
             [`${event.target.name}Error`]:""
         })
-    }
-    componentDidUpdate = (prevProps, prevState)=>{
-        if(prevState.submitIsDisabled === true){
-            if(this.state.firstName.length>0&&this.state.lastName.length>0&&this.state.email.length>0&&this.state.username.length>0&&this.state.password.length>0&&this.state.phoneNumber.length>0&&this.state.confirmPassword.length>0){
-                this.setState({
-                    submitIsDisabled:false
-                })
-            } 
-        } else {
-            if(!this.state.firstName||!this.state.lastName||!this.state.email.length||!this.state.username||!this.state.password||!this.state.phoneNumber||!this.state.confirmPassword){
-                this.setState({
-                    submitIsDisabled:true
-                })
-            }
-        }
-    }
-    errorHandling =()=>{
         if(!isAlpha(this.state.firstName)){
             this.setState({
                 firstNameError:"Invalid First Name"
@@ -74,7 +58,7 @@ export class SignUp extends Component {
         }
         if(!isStrongPassword(this.state.password)){
             this.setState({
-                passwordError:"Invalid Password, must contain a capital letter, a lowercase letter, a symbol, and a number"
+                passwordError:"Invalid Password"
             })
         }
         if(this.state.password !== this.state.confirmPassword){
@@ -83,30 +67,43 @@ export class SignUp extends Component {
             })
         }
     }
+    componentDidUpdate = (prevProps, prevState)=>{
+        if(prevState.submitIsDisabled === true){
+            if(this.state.firstName.length>0&&this.state.lastName.length>0&&this.state.email.length>0&&this.state.username.length>0&&this.state.password.length>0&&this.state.phoneNumber.length>0&&this.state.confirmPassword.length>0){
+                this.setState({
+                    submitIsDisabled:false
+                })
+            } 
+        } else {
+            if(!this.state.firstName||!this.state.lastName||!this.state.email.length||!this.state.username||!this.state.password||!this.state.phoneNumber||!this.state.confirmPassword){
+                this.setState({
+                    submitIsDisabled:true
+                })
+            }
+        }
+    }
+    errorHandling =()=>{
+        
+    }
     handleOnSubmit = async (event)=>{
         event.preventDefault()
+        if(this.state.firstNameError ||this.state.lastNameError ||this.state.emailError ||this.state.usernameError ||this.state.phoneNumberError ||this.state.passwordError ||this.state.confirmPasswordError){
+            this.setState({
+                showError:true,
+            })
+        } else {
         try {
-            const errorCheck = util.promisify(this.errorHandling)
-            await errorCheck
-            console.log(this.state)
-            // const createdUser = Axios.post("/users/sign-up",({}))
+            const createdUser = Axios.post("/users/sign-up",({
+                firstName:this.state.firstName,
+                lastName:this.state.lastName,
+                email:this.state.email,
+                username:this.state.username,
+                phoneNumber:this.state.phoneNumber,
+                password:this.state.password,
+            }))
         } catch (error) {
-            
-        }
-        // const {firstNameError,
-        //     lastNameError,
-        //     emailError,
-        //     usernameError,
-        //     phoneNumberError,
-        //     passwordError,
-        //     confirmPasswordError} = this.state
-        //     if(!firstNameError&&!lastNameError&&!emailError&&!usernameError&&!phoneNumberError&&!passwordError&&!confirmPasswordError){
-        //         try {
-                    
-        //         } catch (error) {
-                    
-        //         }
-        //     }
+            console.log(error)
+        }}
     }
 
     render(){
@@ -129,7 +126,7 @@ export class SignUp extends Component {
                                     value={this.state.firstName}
                                     onChange={this.handleOnChange} />
                                     <div className="errorMessage">
-                                        {this.state.firstNameError}
+                                        {this.state.showError && this.state.firstNameError}
                                     </div>
                             </div>
                             <div className="inline-container">
@@ -142,7 +139,7 @@ export class SignUp extends Component {
                                     value={this.state.lastName}
                                     onChange={this.handleOnChange} />
                                     <div className="errorMessage">
-                                        {this.state.lastNameError}
+                                    {this.state.showError && this.state.lastNameError}
                                     </div>
                             </div>
                             <div className="inline-container">
@@ -155,7 +152,7 @@ export class SignUp extends Component {
                                     value={this.state.email}
                                     onChange={this.handleOnChange} />
                                     <div className="errorMessage">
-                                        {this.state.emailError}
+                                    {this.state.showError && this.state.emailError}
                                     </div>
                             </div>
                             <div className="inline-container">
@@ -168,7 +165,7 @@ export class SignUp extends Component {
                                     value={this.state.username}
                                     onChange={this.handleOnChange} />
                                     <div className="errorMessage">
-                                        {this.state.usernameError}
+                                    {this.state.showError && this.state.usernameError}
                                     </div>
                             </div>
                             <div className="inline-container">
@@ -181,7 +178,7 @@ export class SignUp extends Component {
                                     value={this.state.phoneNumber}
                                     onChange={this.handleOnChange} />
                                     <div className="errorMessage">
-                                        {this.state.phoneNumberError}
+                                    {this.state.showError && this.state.phoneNumberError}
                                     </div>
                             </div>
                             <div className="inline-container">
@@ -194,7 +191,7 @@ export class SignUp extends Component {
                                     value={this.state.password}
                                     onChange={this.handleOnChange} />
                                     <div className="errorMessage">
-                                        {this.state.passwordError}
+                                    {this.state.showError && this.state.passwordError}
                                     </div>
                             </div>
                             <div className="inline-container">
@@ -207,7 +204,7 @@ export class SignUp extends Component {
                                     value={this.state.confirmPassword}
                                     onChange={this.handleOnChange} />
                                     <div className="errorMessage">
-                                        {this.state.confirmPasswordError}
+                                        {this.state.showError && this.confirmPasswordError}
                                     </div>
                             </div>
                                 

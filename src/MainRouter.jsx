@@ -1,6 +1,6 @@
 import SignUp from "./components/SignUp/SignUp"
 // import Home from "./components/Home/Home"
-// import Login from "./components/Login/Login"
+import Login from "./components/Login/Login"
 // import Profile from "./components/Profile/Profile"
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import Nav from "./components/Nav/Nav"
@@ -18,7 +18,7 @@ function MainRouter(props) {
             <Routes>
                 {/* <Route path="/" element={<Home/>}/> */}
                 <Route exact path="/sign-up" element={<SignUp/>}/>
-                {/* <Route exact path="/login" element={props.user ?<Navigate to = "/home"/> :<Login handleUserLogin={props.handleUserLogin}/>}/> */}
+                <Route exact path="/login" element={props.user ?<Navigate to = "/home"/> :<Login handleUserLogin={props.handleUserLogin}/>}/>
                 {/* <Route exact path="/profile" element={<PrivateRoute><Profile user={props.user}/></PrivateRoute>}/> */}
                 {/* <Route exact path="/issues" element={<PrivateRoute><Issues/></PrivateRoute>}/> */}
             </Routes>
