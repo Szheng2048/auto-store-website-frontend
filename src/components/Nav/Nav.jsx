@@ -8,7 +8,7 @@ export class Nav extends Component {
       <nav className='Navbar'>
         <div className="h1-logo">
             <h1>
-                <Link to="/">Home</Link>
+                <Link to="/">Garzonio's Garage</Link>
             </h1>
         </div>
         <div className="right-side-nav">

@@ -1,6 +1,6 @@
 .Navbar {
     height: 75px;
-    background-color: black;
+    background-color: rgb(10, 10, 148);
     color: white;
     display: flex;
     align-items: center;
@@ -8,7 +8,6 @@
     width: 100vw;
     position: absolute;
     top: 0;
-    width: 100vw;
     left: 0;
   }
   .h1-logo {

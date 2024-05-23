@@ -28,10 +28,9 @@ export class SignUp extends Component {
     }
     handleOnChange =(event)=>{
         this.setState({
-            [event.target.name]:`${event.target.value}`,
+            [event.target.name]:event.target.value,
             [`${event.target.name}Error`]:""
-        })
-        if(!isAlpha(this.state.firstName)){
+        },()=>{if(!isAlpha(this.state.firstName)){
             this.setState({
                 firstNameError:"Invalid First Name"
             })
@@ -62,10 +61,11 @@ export class SignUp extends Component {
             })
         }
         if(this.state.password !== this.state.confirmPassword){
+            console.log(this.state.confirmPassword,this.state.password)
             this.setState({
                 confirmPasswordError:"Passwords do not match, please check your passwords"
             })
-        }
+        }})
     }
     componentDidUpdate = (prevProps, prevState)=>{
         if(prevState.submitIsDisabled === true){
@@ -82,25 +82,37 @@ export class SignUp extends Component {
             }
         }
     }
-    errorHandling =()=>{
-        
-    }
     handleOnSubmit = async (event)=>{
         event.preventDefault()
         if(this.state.firstNameError ||this.state.lastNameError ||this.state.emailError ||this.state.usernameError ||this.state.phoneNumberError ||this.state.passwordError ||this.state.confirmPasswordError){
+            console.log("hello")
             this.setState({
                 showError:true,
             })
         } else {
+        console.log("hello")
         try {
-            const createdUser = Axios.post("/users/sign-up",({
+            const user = await Axios.post("/users/sign-up",{
                 firstName:this.state.firstName,
                 lastName:this.state.lastName,
                 email:this.state.email,
                 username:this.state.username,
                 phoneNumber:this.state.phoneNumber,
                 password:this.state.password,
-            }))
+            })
+            if(user){
+                console.log(user.data)
+                toast(`${user.data.payload} created`)
+            }
+            this.setState({
+                firstName:"",
+                lastName:"",
+                email:"",
+                username:"",
+                phoneNumber:"",
+                password:"",
+                confirmPassword:"",
+            })
         } catch (error) {
             console.log(error)
         }}
@@ -204,7 +216,7 @@ export class SignUp extends Component {
                                     value={this.state.confirmPassword}
                                     onChange={this.handleOnChange} />
                                     <div className="errorMessage">
-                                        {this.state.showError && this.confirmPasswordError}
+                                        {this.state.showError && this.state.confirmPasswordError}
                                     </div>
                             </div>
                                 
