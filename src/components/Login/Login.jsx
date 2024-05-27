@@ -65,8 +65,12 @@ export class Login extends Component {
                             value={this.state.password}
                             onChange={this.handleOnChange}/>
                     </div>
-                    <div className="button-container">
-                        <button type="submit">Submit</button>
+                </div>
+                <div className="form-group-block">
+                    <div className="block-container">
+                        <div className="button-container">
+                            <button type="submit">Submit</button>
+                        </div>
                     </div>
                 </div>
             </form>
