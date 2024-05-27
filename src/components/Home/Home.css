@@ -56,7 +56,47 @@ img{
     border: 1px rgb(191, 181, 181) solid ;
     /* height:1px; */
 }
-.video{
-    width:100px;
-    border: 1px solid black
+.videoContainer{
+    width:0.1px;
+    margin-top:20px;
 }
+.videoDescription{
+    font-size: 30px;
+    font-weight: bold;
+    width:100vw;
+    margin-bottom:10px;
+}
+#videoTwo{
+    margin-bottom:20px;
+}
+.video{
+    padding-top: 10%;
+    position: relative;
+}
+.video > div {
+    position:absolute;
+}
+
+@media screen and (max-width: 900px) {
+    .splitScreen{
+        flex-direction:column;
+        align-content: space-evenly;
+    }
+    .splitScreenRightSide{
+        margin-left:0;
+        padding: 0;
+    }
+    .description{
+        margin-left:10px;
+        left:0;
+    }
+    .sideNavBar{
+        display:flex;
+        flex-direction: column;
+        text-align: left;
+    }
+    .divider{
+        width:85vw;
+        border: 1px rgb(191, 181, 181) solid ;
+    }
+  }

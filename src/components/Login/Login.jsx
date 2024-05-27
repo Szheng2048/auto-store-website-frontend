@@ -3,6 +3,7 @@ import "./Login.css"
 import Axios from "../utils/Axios"
 import {jwtDecode} from "jwt-decode"
 import {toast} from "react-toastify"
+import carLogo from "../../assets/carLogo.jpg"
 
 export class Login extends Component {
     state={
@@ -36,6 +37,9 @@ export class Login extends Component {
   render() {
     return (
       <div className="container">
+        {/* <div className="mainFrame">
+            <img src={carLogo} alt="" />
+        </div> */}
         <div className="form-text">Login</div>
         <div className="form-div">
             <form className='form' onSubmit={this.handleOnSubmit}>
