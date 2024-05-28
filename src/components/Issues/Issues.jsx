@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Axios from "../utils/Axios"
-
+import "./Issues.css"
 export class Issues extends Component {
     state={
         problemArray:[],
@@ -65,7 +65,7 @@ export class Issues extends Component {
     }]
     return (
       <div>
-        <h1>Schedule An Appointment</h1>
+        <h1 className='appHeader'>Schedule An Appointment</h1>
         <div className='form-div'>
             <form className='problems-form' onSubmit={this.handleOnSubmit}>
                 <label htmlFor="date">Pick A Date: </label>

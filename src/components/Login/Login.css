@@ -52,7 +52,8 @@ justify-content: center;
 margin-top: 2%;
 }
 .button-container button {
-padding: 10px 10px;
+/* margin-top: 90px; */
+padding: 10px 20px;
 background-color: black;
 color: white;
 font-size: 25px;
@@ -72,5 +73,5 @@ font-size: 16px;
 color: red;
 }
 .redirect{
-    margin-top: 100px;
+    /* margin-top: 35px; */
 }

@@ -1,0 +1,12 @@
+.problems-form{
+    border: 2px solid black;
+    width:80%;
+    height: 220px;
+    box-shadow: rgb(179, 176, 176) 4px 4px;
+    padding-top:10px;
+}
+
+fieldset{
+    width:50%;
+    margin-left:23%;
+}
