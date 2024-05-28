@@ -4,6 +4,7 @@ import Axios from "../utils/Axios"
 import {jwtDecode} from "jwt-decode"
 import {toast} from "react-toastify"
 import carLogo from "../../assets/carLogo.jpg"
+import { NavLink } from 'react-router-dom'
 
 export class Login extends Component {
     state={
@@ -72,6 +73,9 @@ export class Login extends Component {
                             <button type="submit">Submit</button>
                         </div>
                     </div>
+                </div>
+                <div className='redirect'> 
+                    Need to Create An Account? <NavLink to="/Sign-Up">Sign Up</NavLink>
                 </div>
             </form>
         </div>

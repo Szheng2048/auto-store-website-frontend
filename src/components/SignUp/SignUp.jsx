@@ -3,6 +3,7 @@ import "./SignUp.css"
 import Axios from "../utils/Axios"
 import {toast} from "react-toastify"
 import util from "util"
+import { NavLink } from 'react-router-dom'
 import carLogo from '../../assets/carLogo.jpg'
 
 import {isAlpha, isAlphanumeric, isEmail, isMobilePhone, isStrongPassword} from 'validator'
@@ -220,11 +221,14 @@ export class SignUp extends Component {
                                         {this.state.showError && this.state.confirmPasswordError}
                                     </div>
                             </div>
-                                
                             <div className='button-container'>
                                 <button disabled={this.state.submitIsDisabled} type="submit">Submit</button>
                             </div>
                         </form>
+                    </div>
+                    <div>
+                        Already Have An Account?
+                        <NavLink to="/Login">Log In</NavLink>
                     </div>
                 </div>
             </div>

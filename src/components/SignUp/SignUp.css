@@ -14,11 +14,10 @@
     border: 1px solid black;
     box-shadow: 7px 7px rgb(185, 182, 182);
     z-index: 0 ;
-    height:300px;
     position:absolute;
     left:10%;
     width:80%;
-    height:450px;
+    height:470px;
     top:20%;
     background-color: white;
 }

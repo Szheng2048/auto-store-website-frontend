@@ -33,7 +33,8 @@ width: 300px;
 }
 .form-group-block {
 margin-left: auto;
-margin-top: auto;
+margin-top: 15px;
+margin-bottom: 20px;
 }
 .block-container label {
 display: block;
@@ -69,4 +70,7 @@ border-style: inset;
 .errorMessage {
 font-size: 16px;
 color: red;
+}
+.redirect{
+    margin-top: 100px;
 }

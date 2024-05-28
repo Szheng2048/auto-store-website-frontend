@@ -50,7 +50,7 @@ export class Nav extends Component {
                     </li>
                     :
                     <li>
-                        <NavLink to="/sign-up">
+                        <NavLink to="/login">
                             Schedule An Appointment
                         </NavLink>
                     </li>
