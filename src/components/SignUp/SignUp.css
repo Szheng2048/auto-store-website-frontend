@@ -1,25 +1,109 @@
-.container{
-    width: 400px;
-    border: 1px solid black;
-    box-shadow: 7px 7px gray;
-    z-index: 0 ;
-    height:300px;
+.main{
+    display:flex;
 }
-.logoUnder{
-    font-size:30px;
-}
+
+
 .form-text{
     font-size: 30px;
+    padding-bottom: 10px;
     font-weight: bold;
 }
 
-.button-container button{
-    margin-top: 10px;
-    border:2px solid black;
+.container{
+    width: 400px;
+    border: 1px solid black;
+    box-shadow: 7px 7px rgb(185, 182, 182);
+    z-index: 0 ;
+    height:300px;
+    position:absolute;
+    left:10%;
+    width:80%;
+    height:450px;
+    top:20%;
+    background-color: white;
 }
 
-.button-container button:disabled{
-    border: 1px solid gray;
-    pointer-events: none;
+/* img{
+    width: 400px;
+} */
+
+.logoUnder{
+    margin-top: -55px;
+    width: 100vw;
+    background-color:#191919;
+    height:100vh;
 }
 
+.form-div{
+    display:flex;
+    justify-content: center;
+}
+    
+.form-group-block{
+    display: flex;
+    justify-content: space-evenly;
+}
+    
+.form {
+    width: 100%;
+}
+
+.form-group-inline .inline-container {
+    display: inline-block;
+}
+
+.form-group-inline .inline-container label {
+    display: block;
+    margin-bottom: 3px;
+    color: black;
+}
+
+.form-group-inline .inline-container input {
+    padding: 5px 5px;
+    width: 300px;
+}
+
+.form-group-block {
+    margin-left: auto;
+    margin-top: auto;
+}
+
+.block-container label {
+    display: block;
+    margin-bottom: 3px;
+    margin-top: 15px;
+    color: black;
+}
+
+.form-group-block .block-container input {
+    padding: 5px 5px;
+    width: 89%;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+.button-container button {
+    padding: 10px 10px;
+    background-color: black;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.button-container button:disabled {
+    background-color: grey;
+    border: none;
+    cursor: not-allowed;
+}
+.button-container button:active {
+    border-style: inset;
+}
+.errorMessage {
+    font-size: 16px;
+    color: red;
+    height:20px;
+}

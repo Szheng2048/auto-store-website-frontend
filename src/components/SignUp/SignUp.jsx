@@ -3,6 +3,7 @@ import "./SignUp.css"
 import Axios from "../utils/Axios"
 import {toast} from "react-toastify"
 import util from "util"
+import carLogo from '../../assets/carLogo.jpg'
 
 import {isAlpha, isAlphanumeric, isEmail, isMobilePhone, isStrongPassword} from 'validator'
 
@@ -122,7 +123,7 @@ export class SignUp extends Component {
         return (
             <div className='main'>
                 <div className="logoUnder">
-                    Logo
+                    <img src={carLogo} alt="" />
                 </div>
                 <div className="container">
                     <div className="form-text">Sign Up</div>
