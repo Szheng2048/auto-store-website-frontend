@@ -7,36 +7,62 @@ export class Profile extends Component {
         super(props);
     }
     state = {
-        firstName:'',
-        lastName:"",
         username:"",
         email:"",
-        isLoaded:false
+        editEmail:"",
+        editUsername:"",
+        isLoaded:false,
+        canEdit:false,
     }
 
-    // componentDidUpdate(prevProps){
-    //     console.log(prevProps,this.props)
-    //     if(this.props && this.props.user.username !== prevProps.username){
-    //         this.setState({
-    //             isLoaded:true
-    //         })
-    //     } else {
-    //     }
-    // }
-
-
+    async componentDidUpdate(prevProps){
+        if(this.props.user && !prevProps.user){
+          const user = await Axios.get(`/users/get-user-by-id/${this.props.user.id}`)
+          console.log(user)
+          this.setState({
+            isLoaded:true,
+            username:user.data.payload.username,
+            email: user.data.payload.email
+          })
+        }
+    }
+    componentDidMount(){
+      if(this.props.user){
+        this.setState({
+          isLoaded:true,
+          username:this.props.user.username,
+          email:this.props.user.email
+        })
+    }
+    }
+    handleOnChange=(event)=>{
+      this.setState({
+        [event.target.name]:event.target.value
+      })
+    }
   render() {
     return (
       <div>
-        {console.log(this.props.user)}
         {this.state.isLoaded?
         (<div className="update-container">
             <h3>Profile</h3>
-            <div>
-                {/* <p>First Name:{this.props.user.firstName}</p>
-                <p>Last Name:{this.props.user.lastName}</p> */}
+            {/* <div>
                 <p>Username:{this.props.user.username}</p>
                 <p>Email:{this.props.user.email}</p>
+            </div> */}
+            <div>
+              {this.state.canEdit?
+              (<div>
+                <label htmlFor="editUsername">Username: </label>
+                <input type="text" name="editUsername" value={this.state.editUsername} onChange={this.handleOnChange}/>
+                <label htmlFor="editEmail">Email: </label>
+                <input type="text" name="editEmail" value={this.state.editEmail} onChange={this.handleOnChange}/>
+              </div>):
+              (<div>
+                <p>Username: {this.props.user.username}</p>
+                <p>Email: {this.props.user.email}</p>
+              </div>)
+              }
             </div>
         </div>):
         (<div>

@@ -15,7 +15,7 @@ export class Nav extends Component {
             <ul>{
                 this.props.user ?
                 <li>
-                    <NavLink //to="/profile"
+                    <NavLink to="/profile"
                         >
 
                         {this.props.user.username}
