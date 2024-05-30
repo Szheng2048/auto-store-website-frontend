@@ -28,7 +28,6 @@ export class Issues extends Component {
         console.log(this.state.problemArray)
     }
     handleOnSubmit = async (event)=>{
-        console.log("hello")
         event.preventDefault()
         try {
             const newAppointment = await Axios.post("/service/create-new-problem",{user:this.props.user,email:this.props.email,appointment:this.state.date,problems:this.state.problemArray})
@@ -37,7 +36,6 @@ export class Issues extends Component {
                 problemArray:[],
                 date:""
             })
-            //kyle
         } catch (error) {
             console.log(error)
         }

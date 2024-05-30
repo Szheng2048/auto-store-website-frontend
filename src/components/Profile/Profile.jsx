@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Axios from "../utils/Axios"
 import "./Profile.css"
 
+import {isAlphanumeric,isEmail} from 'validator'
+
 export class Profile extends Component {
     constructor(props){
         super(props);
@@ -18,7 +20,6 @@ export class Profile extends Component {
     async componentDidUpdate(prevProps){
         if(this.props.user && !prevProps.user){
           const user = await Axios.get(`/users/get-user-by-id/${this.props.user.id}`)
-          console.log(user)
           this.setState({
             isLoaded:true,
             username:user.data.payload.username,
@@ -33,12 +34,22 @@ export class Profile extends Component {
           username:this.props.user.username,
           email:this.props.user.email
         })
-    }
+      }
     }
     handleOnChange=(event)=>{
       this.setState({
         [event.target.name]:event.target.value
       })
+    }
+    handleOnSubmit=async(event)=>{
+      event.preventDefault()
+      try {
+        if(isAlphanumeric(username) && isEmail(editEmail)){
+
+        }
+      } catch (error) {
+        console.log(error)
+      }
     }
   render() {
     return (
